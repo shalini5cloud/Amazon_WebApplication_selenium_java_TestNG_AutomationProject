@@ -1,0 +1,583 @@
+package Tests;
+import org.testng.asserts.*;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+import java.time.Duration;
+import org.openqa.selenium.interactions.Actions;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import BaseTest.BaseTest;
+import Pages.LoginPage;
+import Pages.Placeorder;
+import Pages.SearchPage;
+import dev.failsafe.internal.util.Assert;
+import utils.DriverFactory;
+
+public class PlaceOrderTest extends BaseTest {
+
+    private WebElement AddnewDelivertAddress;
+    WebDriver wait ;
+
+	@Test
+    public void enterTextInSearchBoxTest() throws InterruptedException {
+        driver.get("https://www.amazon.in/");
+        SearchPage searchPage = new SearchPage(driver);
+       // driver.get("https://www.amazon.in/");
+	      
+
+        // Click Sign-In icon
+        driver.findElement(By.xpath("//span[@id=\"nav-link-accountList-nav-line-1\"]")).click();
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+       //Thread.sleep(2000);
+       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.switchTo().defaultContent();
+       // driver.switchTo().frame(0);
+      WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement emailField = wait11.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id=\"ap_email_login\"]")));
+        System.out.println("enter phone number if web element found ");
+       //hread.sleep(2000);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmailOrPhone("shalinisunny46@gmail.com");
+       Thread.sleep(2000);
+        loginPage.clickContinue();
+       //hread.sleep(2000);
+       // loginPage.closePopupIfPresent();
+       //hread.sleep(2000);
+        loginPage.enterEmailOrPhonepassword("Shalini@12345");
+        //Thread.sleep(5000);
+        System.out.println(driver.getPageSource());
+        loginPage.  closePasskeyPopupIfPresent();
+
+           // driver.quit();
+            loginPage. clickinsidepage();
+            Thread.sleep(4000);
+           // driver.quit();
+        searchPage.searchProduct("hp laptop");
+
+        Thread.sleep(3000);
+
+        driver.get("https://aax-eu-zaz.amazon.in/x/c/RGFIC2Bvsbpl6YelhLlxG6sAAAGdWKZMBQoAAAH_AQBvbm9fdHhuX2JpZDEgICBvbm9fdHhuX2ltcDIgICCQFppG/clv1c_ek-4gnfyLdTejRAFuerZfo99BPZZPMMckmTYa2DhHK9Qf83wFUXWMJcFYdq_wDROCSV32d_BoJ-AMU0VxSfqYYJUH3Z8NfX171Jw2k7s48AuyxWpPfe6UwJ84uFWmsYV44ZIXoUuxFsMymMo4Ewep6Baotj4dtV0UoYUNipSbZNVATj5hlBp7kCJ5SuYiKZ2boxOrEdJIOLg3MMthkCA0qhY8f49Ck_X-43M-JGhDu5mMAvl3DApNHbndcfRfw26swTiALvOpDjklurQuZPgBKAoPPPLZ4UOEsBfEUIkElVY56mPKyjSPPurPDGgGq_kaD09R73PBf1rq1p2xRT-73-WrE3OtAZVDcuX4Ne-TDnBUVsKv93gr1Wu7NAM_vF0Tq3j1YH9h70B-95KrDd7WN43CutXlNyvzM72e4RiRhY3tPMUIKiZlEWo7o1Z1V0IdSx8k4kCa0kfqz07UCVtXKxGI7R2SR6pUUQJ2GWV5EnTdyS5kpdb7PE91EHjVwnPoyqWth3uJVtFOKI-pw9tVhmMUxuotFit4mj6OHT_UJ2Xt4Cv5dTEdecA8LXk2zYBH_Tr5S8d-ulfkngWLeFjTDqFnrGVHon75M2j8I9MlL0uc6uSzfFSWnrJqpl53FZEyaL_2ePw5B5BGZdKe1FFqU18TPU5vKujv54l30CPy37pRwm_vevEzad_G-_76ZgGTOkO_qLjs7pnJoht8iLwY9vIjI1c0U56HKaLrU8ZsrhqbPqRfIm5p0KDg2gClPa3RYsvZYOG5kbR6UKnl5J9BxakVcQIda9oUvbuN-a77VaUnp2aG__cROXbt2V1LneQxyI_MtPVnjIbZxN89qwT85HGI49vHJD0uC7vfbhgvV-xn7-mCASiqjoUzLWqvTjv9j4Jiv62m0kfRQ8QjH-iJZ_1IryR2LLC6_iaslpkUqZuT98D8ILHjY8W8P-iksKgMl4kq-n1ksGER2LJbgZQplMo0g7NfkwGRjBHwKqwxRKm3QX-f8f6L-011iX50ZX0qk6ikgW3t_uMrPfvhrPNM-uf0xvsHhG1-IMWAywRzQYgtCtZSSh_KwHxI-DgrVSFpBAete6QTtTFBL6cic2ZIN8_hGH4bOK3Mn4Vpej8BOtOLPvNZj9m0XXFo6eUxwfR6j_zaOSZeeR8frRzRqfyr72y04XqWUMK8yM0UItyFBhZcqs62WGfjcUDHG62BHt8Arh46yn-qehyz1w/http://www.amazon.in/dp/B0F3HQKGMN/ref=syn_sd_onsite_desktop_0?ie=UTF8&psc=1&pf_rd_p=fd82b077-06f6-479f-8fb9-11c7d326b43b&pf_rd_r=65ZZKB43T6NECMX3EM3B&pd_rd_wg=qfeOa&pd_rd_w=EDKsg&pd_rd_r=33505591-39de-40df-9991-8d40a24bf0bd&aref=Qpub5qIioR"); 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement buyNowBtn = wait.until(
+            ExpectedConditions.elementToBeClickable(By.id("buy-now-button"))
+        );
+       // System.out.println(driver.getCurrentUrl());
+       // System.out.println(driver.getTitle());
+      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+      
+
+        // Scroll the button into view
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", buyNowBtn);
+
+        // Try normal click first
+        try {
+            buyNowBtn.click();
+        } catch (Exception e1) {
+            try {
+                // Fallback: Actions click
+                Actions actions = new Actions(driver);
+                actions.moveToElement(buyNowBtn).click().perform();
+            } catch (Exception e2) {
+                // Final fallback: JavaScript click
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buyNowBtn);
+            
+            Thread.sleep(5000);
+            
+          //  driver.get("https://www.amazon.in/checkout/p/p-404-7135914-2084365/address?pipelineType=Chewbacca&referrer=spc&ref_=chk_spc_chg_shipaddressselect");
+          //  driver.getTitle();
+            Thread.sleep(5000);
+           // WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+          //  wait.until(ExpectedConditions.urlContains("checkout"));
+           // WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+           // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+         // wait until button is present
+            //WebDriverWait wait9 = new WebDriverWait(driver, Duration.ofSeconds(15));
+           // driver.switchTo().frame("iframeNameOrId");
+            // Refine locator to match the actual button text
+         //   WebElement buyNowBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("buy-now-button")));
+           // buyNowBtn.click();
+           
+           // System.out.println(driver.getCurrentUrl());
+           // System.out.println(driver.getTitle());
+          //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+          
+
+            // Scroll the button into view
+            //catch (Exception e4) {
+                    // Final fallback: JavaScript click
+                   // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cod);
+             //   }
+            
+
+                // Scroll directly to the COD option
+               // JavascriptExecutor js = (JavascriptExecutor) driver;
+             //   js.executeScript("arguments[0].scrollIntoView(true);", codOption);
+            
+
+           // JavascriptExecutor js = (JavascriptExecutor) driver;
+           
+        
+           // Assert.assertTrue(codSelected, "Cash on Delivery should be selected");
+        
+	
+
+            // Refine locator to match the actual button text
+           // ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+           // button.click();
+           /// WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
+           // WebElement click = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class=\"a-button-text\"]")));
+          // Placeorder placeorder = new Placeorder(driver);
+         //  placeorder .AddnewDelivertAddress();
+          // Thread.sleep(5000);
+          //  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+           // button.click();
+    
+          
+        
+            
+        
+
+            // Wait until the button is clickable, then click
+            
+            
+       
+           // WebDriverWait wait6 = new WebDriverWait(driver, Duration.ofSeconds(20))
+           
+        
+            
+           
+        
+        
+            
+        
+          //  System.out.println(addNewAddress.isDisplayed());
+           // System.out.println(addNewAddress.isEnabled());
+       
+	
+        // addAddressBtn.click();
+          //  driver.quit();
+               // buyNowBtn1.click();
+               
+        
+            // Try normal click first
+           
+            
+                
+            
+           // public void scrollToElement(WebDriver driver, WebElement element) {
+           Placeorder placeOrder1 = new  Placeorder(driver);
+
+            // Call your method to enter full name
+           // placeOrder. enterFullName();
+          // placeOrder1.enterFullName();
+            Thread.sleep(5000);
+            placeOrder1.enterFullName("Rahul Sharma");
+
+            // Add assertions or further steps as needed
+            // e.g., check that the field contains the expected value
+            String enteredValue = driver.findElement(By.id("address-ui-widgets-enterAddressFullName")).getAttribute("value");
+            assert enteredValue.equals("Rahul Sharma");
+
+            driver.quit();
+}
+	
+
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+
+
+    
+    
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Phone number
+   // WebElement phone = driver.findElement(By.id("address-ui-widgets-enterAddressPhoneNumber"));
+   // js.executeScript("arguments[0].scrollIntoView({block: 'center'});", phone);
+   // phone.sendKeys("9876543210");
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+           
+            // driver.switchTo().defaultContent();
+         
+           // Thread.sleep(5000);
+           // WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+ 	       //Thread.sleep(2000);
+           // WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+            //driver.switchTo().defaultContent();
+            //WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+ 	       //Thread.sleep(2000);
+ 	       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+ 	      //  driver.switchTo().defaultContent();
+ 	       // driver.switchTo().frame(0);
+ 	    //  WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofSeconds(10));
+           //  driver.manage().deleteAllCookies();
+ 	      //  WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id=\"ap_email_login\"]")));
+ 	      //  System.out.println("enter phone number if web element found ");
+ 	      // Thread.sleep(5000);
+ 	    //  LoginPage loginPage = new LoginPage(driver);
+	       // loginPage.enterEmailOrPhone("shalinisunny46@gmail.com");
+	       //hread.sleep(2000);
+	      //  loginPage.clickContinue();
+ 	      // Thread.sleep(5000);
+ 	       // loginPage.closePopupIfPresent();
+ 	       //hread.sleep(2000);
+ 	      //  loginPage.enterEmailOrPhonepassword("Shalini@12345");
+ 	        //Thread.sleep(5000);
+ 	     //   System.out.println(driver.getPageSource());
+ 	       // loginPage.  closePasskeyPopupIfPresent();
+
+ 	           // driver.quit();
+ 	           // loginPage. clickinsidepage();
+ 	          //  driver.quit();
+                // WebElement addAddressBtn = wait.until(
+                         //  ExpectedConditions.elementToBeClickable(By.xpath("//a[@class=\"a-button-text\"]"))
+                    //  );
+                      // addAddressBtn.click();
+                       //Thread.sleep(4000);
+        
+           
+                       
+                       
+        
+
+
+   
+
+
+
+              
+        
+    
+    
+
+        
+    
+      
+
+ 
+
+
+    
+
+
+    
+      //  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", buyNowBtn);
+       // buyNowBtn.click();
+
+       // DriverFactory.scrollToElement(driver, buyNowBtn);
+
+       // try {
+           // buyNowBtn.click();
+        //} catch (Exception e) {
+            //((JavascriptExecutor) driver).executeScript("arguments[0].click();", buyNowBtn);
+      //  }
+       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+     // Enter email
+  //  WebElement emailField = wait.until(
+        // ExpectedConditions.presenceOfElementLocated( By.xpath("  //input[@type=\"email\"]"))
+   //  );
+   // loginPage  loginPage =new  loginPage(driver);
+    // loginPage.enterEmailOrPhone("shalinisunny46@gmail.com");
+    //hread.sleep(2000);
+    // loginPage.clickContinue();
+    //hread.sleep(2000);
+    // loginPage.closePopupIfPresent();
+    //hread.sleep(2000);
+    // loginPage.enterEmailOrPhonepassword("Shalini@12345");
+     //Thread.sleep(5000);
+    // System.out.println(driver.getPageSource());
+    // loginPage.  closePasskeyPopupIfPresent();
+
+        // driver.quit();
+        // loginPage. clickinsidepage();
+        // WebElement addAddressBtn = wait.until(
+               //  ExpectedConditions.elementToBeClickable(By.xpath("//a[@class=\"a-button-text\"]"))
+           //  );
+           //  addAddressBtn.click();
+           //  Thread.sleep(5000);
+    
+           
+       // Placeorder.addNewAddress();
+         //driver.quit();
+
+
+
+
+
+
+
+	
+	
+        
+
+    
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+        
+        
+        
+
+
+  
+    
+                                  
+
+
+
+    
+    
+
+   
+    
+    
+  
+
+
+
+
+
+
+          
+     
+ 
+
+    
+    
+
+
+    
+
+
+
+
+
+
+
+    
+    
+
+
+    
+
+
+
+    
+
+
+    
+
+
+    
+	        
+	        
+
+
+
+
+
+
+
+
+
+
+
+	        
+
+	        // Verify navigation
+	    //   String currentUrl = driver.getCurrentUrl();
+	       // Assert.assertTrue(currentUrl.contains("signin") || currentUrl.contains("checkout")
+	              // "Not redirected to checkout/login page!");
+
+	       // Thread.sleep(5000);
+
+	      // LoginPage loginPage = new LoginPage(driver);
+	      // loginPage.enterEmailOrPhone("sunny.avmcomforts@gmail.com");
+	      // Thread.sleep(2000);
+	       
+	      //  loginPage.clickContinue();
+	        
+	        
+	        
+	       
+	      
+	       // loginPage.enterEmailOrPhonepassword("Dog123");
+	        //Thread.sleep(5000);
+	      //  System.out.println(driver.getPageSource());
+	      //  loginPage.  closePasskeyPopupIfPresent();
+
+	           // driver.quit();
+	          //  loginPage.clickinsidepage();
+	    
+
+
+	           // Placeorder placeorder= new  Placeorder (driver);
+	           // placeorder.changeaddress();
+	    
+
+	   
+	       
+
+	        // Use utility method to scrolls
+	       
+	      
+	       // Placeorder.clickbuybutton();
+	      //  searchPage. clicktoproduct();
+	        //Thread.sleep(5000);
+	       // ProductPage productPage = new ProductPage(driver);
+	      //  productPage.addToCart();
+	       // CartOperation CartOperation = new CartOperation(driver);
+	       // CartOperation.openCart();
+	       // Thread.sleep(4000);
+	       // CartOperation. payorder();
+	       // Thread.sleep(5000);
+	        //System.out.println("clcik yess is button  got clicked ");
+	        
+	       // Thread.sleep(7000);
+	        
+	       
+
+	       
+	        
+		
+	   // private void scrollToElement(WebDriver driver, WebElement buyNowBtn) {
+			// TODO Auto-generated method stub
+			
+		
+
+
+		
+
+		//private void scrollIntoElement(WebDriver driver, WebElement buyNowBtn) {
+			// TODO Auto-generated method stub
+			
+		
+		
+		
+	    
+	    
+      
+      
+     
+
+
+
+	       
+	    
+	     
+	        
+			
+	   
+	    
+	      
+// optional pause to see action
+
+	      //  Assert.assertTrue(searchPage.isResultDisplayed() "No search results found for Smartwatch!");
+	    
+
+
+			
+		
+		
+		
+			// TODO Auto-generated method stub
+			
+		
+
+
+
+

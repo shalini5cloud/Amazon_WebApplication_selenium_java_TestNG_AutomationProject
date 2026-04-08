@@ -1,0 +1,84 @@
+package Tests;
+
+
+	import BaseTest.BaseTest;
+	import Pages.SearchPage;
+	import org.testng.Assert;
+	import org.testng.annotations.Test;
+
+	public class SearchTest extends BaseTest {
+
+	    @Test(priority=0)
+	    public void enterTextInSearchBoxTest() throws InterruptedException {
+	        SearchPage searchPage = new SearchPage(driver);
+
+	        searchPage.searchProduct("Smartwatch");
+
+	        Thread.sleep(3000); // optional pause to see action
+
+	        Assert.assertTrue(searchPage.isResultDisplayed(), "No search results found for Smartwatch!");
+	    }
+	@Test(priority=1)
+	 public void enterTextInSearchBoxTestphone() throws InterruptedException {
+	        SearchPage searchPage = new SearchPage(driver);
+
+	        searchPage.searchProduct("samsung");
+
+	        Thread.sleep(3000); // optional pause to see action
+
+	        Assert.assertTrue(searchPage.isResultDisplayed(), "No search results found for Smartwatch!");
+	    }
+	@Test(priority=2)
+	public void enterTextInSearchBoxTestDress() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.searchProduct("kurtis");
+
+        Thread.sleep(3000); // optional pause to see action
+
+        Assert.assertTrue(searchPage.isResultDisplayed(), "No search results found for Smartwatch!");
+    }
+	@Test(priority=3)
+	public void enterTextInSearchBoxTestmoderntops() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.searchProduct("partydress");
+
+        Thread.sleep(3000); // optional pause to see action
+
+        Assert.assertTrue(searchPage.isResultDisplayed(), "No search results found for Smartwatch!");
+    }
+	@Test(priority=4)
+	public void enterTextInSearchBoxTestmoderncreams() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.searchProduct("face wash for oily skin");
+
+        Thread.sleep(3000); // optional pause to see action
+
+        Assert.assertTrue(searchPage.isResultDisplayed(), " search results found for facewash!");
+    }
+	@Test(priority=5)
+	public void enterTextInSearchBoxTestmoderncreamsWroungitem() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.searchProduct("xyxsded");
+
+        Thread.sleep(3000); // optional pause to see action
+
+        Assert.assertTrue(searchPage.isResultDisplayed(), " search results found for  xyxsded!");
+    }
+	@Test(priority=6)
+	public void enterTextInSearchBoxTestmoderncreamsWroungitemproduct() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.searchProduct("gmail.com");
+
+        Thread.sleep(3000); // optional pause to see action
+
+        Assert.assertTrue(searchPage.isResultDisplayed(), " search results found for gmail.com!");
+    }
+	
+	}
+
+

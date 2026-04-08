@@ -1,0 +1,134 @@
+package Pages;
+
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeoutException;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LoginPage {
+
+
+
+    private WebDriver driver;
+
+    // XPath locators
+  //  private By phoneOrEmailField = By.xpath( "  /html/body/div[1]/div[1]/div[2]/div/div/div/div/span/form/div[1]/input");
+  //  private By continueButton = By.xpath("//input[@id='continue']");
+   // private By passwordField = By.xpath("//input[@id='ap_password']");
+   // private By signInButton = By.xpath("//input[@id='signInSubmit']");
+    //private By errorMessage = By.xpath("//div[@class='a-alert-content']");
+
+        WebDriver driver1;
+        WebDriverWait wait;
+
+        By emailField = By.xpath("  //input[@type=\"email\"]");
+        By password = By.xpath(" //input[@type=\"password\"]");   
+        By continueBtn = By.xpath("  //span[@id=\"continue\"]");
+        By clickSMS = By.xpath("  //span[@class=\"a-button a-button-span12 a-button-base cvf-widget-btn cvf-widget-link-secondary-channel\"]");
+        By verifyOTP = By.xpath("//span[@id=\"cvf-submit-otp-button-announce\"]");
+        By popupCloseBtn = By.xpath("//div[contains(@class,'a-alert-content')]"); 
+        By signinsidepage =By.xpath("//input[@id=\"signInSubmit\"]");
+        By popupBox = By.id("auth-error-message-box");
+        
+        public LoginPage(WebDriver driver) {
+            this.driver = driver;
+            this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        }
+
+        public void enterEmailOrPhone(String value) {
+            WebElement field = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
+            try {
+                field.clear();
+                field.sendKeys("sunny.avmcomforts@gmail.com");
+            } catch (Exception e) {
+                // Fallback: JavaScript injection
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].value='" + value + "';", field);
+                js.executeScript("arguments[0].dispatchEvent(new Event('input'));", field);
+                js.executeScript("arguments[0].dispatchEvent(new Event('change'));", field);
+            }
+        }
+
+        public void clickContinue() throws InterruptedException {
+            wait.until(ExpectedConditions.elementToBeClickable(continueBtn)).click();
+            Thread.sleep(2000);
+        }
+    /*  public boolean isPopupPresent() throws TimeoutException {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(popupBox));
+			return true;
+        }
+
+        public void handlePopupIfPresent() throws TimeoutException {
+            if (isPopupPresent()) {
+                System.out.println("Popup appeared: " +
+                    driver.findElement(popupBox).getText());
+                // Optionally wait until it disappears
+                wait.until(ExpectedConditions.invisibilityOfElementLocated(popupBox));
+            }
+        }*/
+       
+
+        public void enterEmailOrPhonepassword(String value) {
+            WebElement pass = wait.until(ExpectedConditions.visibilityOfElementLocated( password));
+            try {
+            	 pass.clear();
+            	 pass.sendKeys("Sunny@2416");
+            	
+            } catch (Exception e) {
+                // Fallback: JavaScript injection
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].value='" + value + "';", pass);
+                js.executeScript("arguments[0].dispatchEvent(new Event('input'));", pass);
+                js.executeScript("arguments[0].dispatchEvent(new Event('change'));", pass);}
+            }
+        
+        
+        public boolean isPopupPresent() throws TimeoutException {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(popupBox));
+			return true;
+        }
+
+        // Handle popup gracefully
+        public void handlePopupIfPresent() throws TimeoutException {
+            if ( isPopupPresent()) {
+                String message = driver.findElement(popupBox).getText();
+                System.out.println("Popup appeared: " + message);
+                // No close button → just log and continue
+            } else {
+                System.out.println("No popup appeared.");
+            }
+        }
+        
+        public void clickinsidepage() throws InterruptedException {
+            wait.until(ExpectedConditions.elementToBeClickable( signinsidepage)).click();
+            Thread.sleep(2000);
+}
+
+		
+
+	
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+
+    
+
+  
+
+
+
+

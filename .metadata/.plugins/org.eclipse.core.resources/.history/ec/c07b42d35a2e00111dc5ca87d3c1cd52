@@ -1,0 +1,113 @@
+package Pages;
+
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.support.ui.WebDriverWait;
+	import org.openqa.selenium.support.ui.ExpectedConditions;
+	import java.time.Duration;
+
+	public class SearchPage {
+	    private WebDriver driver;
+
+	    private By searchBox = By.id("twotabsearchtextbox");
+	    private By searchButton = By.id("nav-search-submit-button");
+	    public By searchResults = By.cssSelector("div.s-main-slot div[data-component-type='s-search-result']");
+
+	    public SearchPage(WebDriver driver) {
+	        this.driver = driver;
+	    }
+
+	    public void searchProduct(String productName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+
+	        driver.findElement(searchBox).clear();
+	        driver.findElement(searchBox).sendKeys(productName);
+
+	        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+	        driver.findElement(searchButton).click();
+
+	        wait.until(ExpectedConditions.presenceOfElementLocated(searchResults));
+	    }
+
+	    public boolean isResultDisplayed() {
+	        return driver.findElements(searchResults).size() > 0;
+	    }
+	
+	
+	 public void searchProductmobile(String productName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+
+	        driver.findElement(searchBox).clear();
+	        driver.findElement(searchBox).sendKeys(productName);
+
+	        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+	        driver.findElement(searchButton).click();
+
+	        wait.until(ExpectedConditions.presenceOfElementLocated(searchResults));
+	    }
+
+	    public boolean isResultDisplayed1() {
+	        return driver.findElements(searchResults).size() > 0;
+	    }
+	    
+	    public void searchProductkurtis(String productName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+
+	        driver.findElement(searchBox).clear();
+	        driver.findElement(searchBox).sendKeys(productName);
+
+	        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+	        driver.findElement(searchButton).click();
+
+	        wait.until(ExpectedConditions.presenceOfElementLocated(searchResults));
+	    }
+
+	    public boolean isResultDisplayed2() {
+	        return driver.findElements(searchResults).size() > 0;
+	    }
+	    public void searchProductwomenstops(String productName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+
+	        driver.findElement(searchBox).clear();
+	        driver.findElement(searchBox).sendKeys(productName);
+
+	        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+	        driver.findElement(searchButton).click();
+
+	        wait.until(ExpectedConditions.presenceOfElementLocated(searchResults));
+	    }
+
+	    public boolean isResultDisplayed3() {
+	        return driver.findElements(searchResults).size() > 0;
+	    }
+	    public void searchProductwomensfacewash(String productName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+
+	        driver.findElement(searchBox).clear();
+	        driver.findElement(searchBox).sendKeys(productName);
+
+	        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+	        driver.findElement(searchButton).click();
+
+	        wait.until(ExpectedConditions.presenceOfElementLocated(searchResults));
+	    }
+
+	    public boolean isResultDisplayed4() {
+	        return driver.findElements(searchResults).size() > 0;
+	    }
+
+		public void clicktoproduct() {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	
+
+
+

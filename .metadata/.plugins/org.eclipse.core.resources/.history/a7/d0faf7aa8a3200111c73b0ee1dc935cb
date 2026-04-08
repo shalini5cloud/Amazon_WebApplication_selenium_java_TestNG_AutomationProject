@@ -1,0 +1,183 @@
+package Tests;
+
+import java.time.Duration;
+import java.util.concurrent.TimeoutException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import BaseTest.BaseTest;
+import Pages.LoginPage;
+import dev.failsafe.internal.util.Assert;
+
+public class LoginPageTest  extends BaseTest{
+	
+	
+	  @Test
+	    public void validPhoneLoginTest() throws InterruptedException, TimeoutException {
+	        driver.get("https://www.amazon.in/");
+	  
+	      
+
+	        // Click Sign-In icon
+	        driver.findElement(By.xpath("//span[@id=\"nav-link-accountList-nav-line-1\"]")).click();
+	        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	       //Thread.sleep(2000);
+	       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        driver.switchTo().defaultContent();
+	       // driver.switchTo().frame(0);
+	      WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebElement emailField = wait11.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id=\"ap_email_login\"]")));
+	        System.out.println("enter phone number if web element found ");
+	       //hread.sleep(2000);
+	        LoginPage loginPage = new LoginPage(driver);
+	        loginPage.enterEmailOrPhone("shalinisunny46@gmail.com");
+	       Thread.sleep(2000);
+	        loginPage.clickContinue();
+	       //hread.sleep(2000);
+	       // loginPage.closePopupIfPresent();
+	       //hread.sleep(2000);
+	        loginPage.enterEmailOrPhonepassword("Shalini@12345");
+	        //Thread.sleep(5000);
+	        System.out.println(driver.getPageSource());
+	        loginPage.  closePasskeyPopupIfPresent();
+
+	           // driver.quit();
+	            loginPage. clickinsidepage();
+	           // driver.quit();
+	        }
+	  
+	  @Test
+	  public void validPhoneLoginTestInvalidCrendials() throws InterruptedException, TimeoutException {
+	        driver.get("https://www.amazon.in/");
+	      
+
+	        // Click Sign-In icon
+	        driver.findElement(By.xpath("//span[@id=\"nav-link-accountList-nav-line-1\"]")).click();
+	        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	       //Thread.sleep(2000);
+	       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        driver.switchTo().defaultContent();
+	       // driver.switchTo().frame(0);
+	      WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebElement emailField = wait11.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id=\"ap_email_login\"]")));
+	        System.out.println("enter phone number if web element found ");
+	       //hread.sleep(2000);
+	        LoginPage loginPage = new LoginPage(driver);
+	        loginPage.enterEmailOrPhoneErrorMessage("shalini46@gmail.com");
+	       Thread.sleep(2000);
+	        loginPage.clickContinueError();
+	       //hread.sleep(2000);
+	       // loginPage.closePopupIfPresent();
+	       //hread.sleep(2000);
+	        loginPage.enterEmailOrPhonepasswordErrorMessage("Shalini@123456");
+	        //Thread.sleep(5000);
+	        System.out.println(driver.getPageSource());
+	        loginPage. closePasskeyPopupIfPresentFalse();
+
+	           // driver.quit();
+	            loginPage.clickinsidepageErrorMessage();
+	          //  driver.quit();
+	        
+	      
+	       // Thread.sleep(2000);
+	      
+	        //Thread.sleep(5000);
+	      
+	
+	  //
+	        
+	     /*   loginPage. clickSMS();
+	        Thread.sleep(4000);
+	        loginPage. verifyOTPMOBILE();
+	        Thread.sleep(6000);
+	        WebDriverWait wait12 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	           WebElement password = wait11.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" //input[@type=\"password\"]")));
+	           
+	           Thread.sleep(4000);
+	           LoginPage loginPage1 = new LoginPage(driver);
+		        loginPage1.enterEmailOrpassword("sunny@2416");
+		        Thread.sleep(5000);
+
+	        // Verify password field appears
+	       // Assert.assertTrue(wait11.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_password"))).isDisplayed(),
+	            //"Password field not displayed after clicking Continue!");
+	  }*/
+	  
+	  @Test
+	  public void validPhoneLoginTestInvalid() throws InterruptedException, TimeoutException {
+	        driver.get("https://www.amazon.in/");
+	      
+
+	        // Click Sign-In icon
+	        driver.findElement(By.xpath("//span[@id=\"nav-link-accountList-nav-line-1\"]")).click();
+	        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	       //Thread.sleep(2000);
+	       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        driver.switchTo().defaultContent();
+	       // driver.switchTo().frame(0);
+	      WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebElement emailField = wait11.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id=\"ap_email_login\"]")));
+	        System.out.println("enter phone number if web element found ");
+	       //hread.sleep(2000);
+	        LoginPage loginPage = new LoginPage(driver);
+	        loginPage.enterEmailOrPhone("shalini46@gmail.com");
+	       Thread.sleep(2000);
+	        loginPage.clickContinue();
+	       //hread.sleep(2000);
+	       // loginPage.closePopupIfPresent();
+	       //hread.sleep(2000);
+	        loginPage.enterEmailOrPhonepassword("Shalini@123456");
+	        //Thread.sleep(5000);
+	        System.out.println(driver.getPageSource());
+	        loginPage.  closePasskeyPopupIfPresent();
+
+	           // driver.quit();
+	            loginPage. clickinsidepage();
+	            driver.quit();
+	  
+
+	  @AfterMethod
+	    public void tearDown() {
+	        driver.quit();
+	    }
+}
+	  }
+}
+	        
+
+	        // Enter phone number
+	       
+	       // LoginPage loginPage = new LoginPage(driver);
+	        //loginPage.enterPhoneNumber("7975398264");
+	       // Thread.sleep(5000);
+	  // replace with valid phone number
+
+	        // Enter password
+	     
+
+	    // Verify password field appears
+	   
+	
+
+   
+
+        // Verify login success
+        //String accountText = driver.findElement(By.id("nav-link-accountList-nav-line-1")).getText();
+       // Assert.assertTrue(accountText.contains("Hello") || accountText.contains("नमस्ते"),
+           // "Login failed with valid phone number!");
+    
+
+ 
+
+

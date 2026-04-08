@@ -1,0 +1,141 @@
+package Tests;
+
+import java.sql.Driver;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import BaseTest.BaseTest;
+import Pages.CartOperation;
+import Pages.LoginPage;
+import Pages.Placeorder;
+import Pages.ProductPage;
+import Pages.SearchPage;
+
+public class PlaceOrderTest   extends BaseTest{
+
+
+	    @Test
+	    public void enterTextInSearchBoxTest() throws InterruptedException {
+	        SearchPage searchPage = new SearchPage(driver);
+
+	        searchPage.searchProduct("hp laptop ");
+	        driver.get("https://www.amazon.in/gp/aw/d/B0BR3M8XHK/?_encoding=UTF8&pd_rd_plhdr=t...");
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebElement buyNowBtn = wait.until(
+	            ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='buy-now-button']"))
+	        );
+
+	        // Use utility method to scroll
+	       WebElement scrollToElement(Driver, buyNowBtn);
+	    
+
+	        // Click Buy Now (with fallback)
+	        try {
+	            buyNowBtn.click();
+	        } catch (Exception e) {
+	            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buyNowBtn);
+	        }
+
+	        // Verify navigation
+	        String currentUrl = driver.getCurrentUrl();
+	        Assert.assertTrue(currentUrl.contains("signin") || currentUrl.contains("checkout"),
+	                "Not redirected to checkout/login page!");
+	        Thread.sleep(5000);
+	        LoginPage loginPage = new LoginPage(driver);
+	        loginPage.enterEmailOrPhone("sunny.avmcomforts@gmail.com");
+	       //hread.sleep(2000);
+	        loginPage.clickContinue();
+	       
+	       //hread.sleep(2000);
+	       // LoginPage loginPage = new LoginPage(driver);
+	        //loginPage.enterEmailOrPhone("sunny.avmcomforts@gmail.com");
+	       //hread.sleep(2000);
+	       // loginPage.clickContinue();
+	       //hread.sleep(2000);
+	       // loginPage.closePopupIfPresent();
+	       //hread.sleep(2000);
+	        loginPage.enterEmailOrPhonepassword("Dog123");
+	        //Thread.sleep(5000);
+	        System.out.println(driver.getPageSource());
+	        loginPage.  closePasskeyPopupIfPresent();
+
+	           // driver.quit();
+	            loginPage. clickinsidepage();
+	            Placeorder placeorder= new  Placeorder (driver);
+	            placeorder.changeaddress();
+	    
+
+	   
+	       
+
+	        // Use utility method to scrolls
+	       
+	      
+	       // Placeorder.clickbuybutton();
+	      //  searchPage. clicktoproduct();
+	        //Thread.sleep(5000);
+	       // ProductPage productPage = new ProductPage(driver);
+	      //  productPage.addToCart();
+	       // CartOperation CartOperation = new CartOperation(driver);
+	       // CartOperation.openCart();
+	       // Thread.sleep(4000);
+	       // CartOperation. payorder();
+	       // Thread.sleep(5000);
+	        //System.out.println("clcik yess is button  got clicked ");
+	        
+	       // Thread.sleep(7000);
+	        
+	       
+
+	       
+	        
+		
+	   // private void scrollToElement(WebDriver driver, WebElement buyNowBtn) {
+			// TODO Auto-generated method stub
+			
+		
+
+
+		
+
+		//private void scrollIntoElement(WebDriver driver, WebElement buyNowBtn) {
+			// TODO Auto-generated method stub
+			
+		
+		
+		
+	        
+	       
+	    
+	     
+	        
+			
+	   
+
+	      
+// optional pause to see action
+
+	      //  Assert.assertTrue(searchPage.isResultDisplayed() "No search results found for Smartwatch!");
+	    
+
+
+			
+		
+		
+		
+			// TODO Auto-generated method stub
+			
+		}*\
+
+
+
+

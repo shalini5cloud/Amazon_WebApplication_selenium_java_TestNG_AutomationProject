@@ -1,0 +1,98 @@
+package Tests;
+
+import java.time.Duration;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+import BaseTest.basetest;
+import Pages.HomePage;
+import Pages.Loginpage;
+
+
+
+import utils.DriverFactory;
+
+public class LoginTest extends basetest {
+	
+	
+	
+	 @Test
+	    public void testSignInWithPhone() throws InterruptedException {
+		 WebDriver driver = DriverFactory.getDriver();
+	        // Step 1: Click Sign in on 
+	        HomePage homePage = new HomePage(DriverFactory.getDriver());
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        HomePage homePage1 = new HomePage(driver);
+	        homePage1.clickSignIn();
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email")));
+
+	        // Step 2: Enter phone number and click Continue
+	        Loginpage loginPage = new Loginpage(driver);
+	        loginPage.enterPhoneNumberandclick("9876543210"); 
+	        WebDriver driver1 = DriverFactory.getDriver();
+	        WebDriverWait wait1 = new WebDriverWait(driver1, Duration.ofSeconds(10));
+	        boolean passwordVisible = wait.until(ExpectedConditions
+	                .visibilityOfElementLocated(By.id("ap_password")))
+	                .isDisplayed();
+
+	            Assert.assertTrue(passwordVisible, "Password field not displayed after entering phone number!");// replace with your test number
+
+	        // Step 3: Verify navigation to password page
+	       
+	    }
+	 @AfterMethod
+	 public void tearDown() throws InterruptedException {
+	     Thread.sleep(5000); // wait 5 seconds before closing
+	     DriverFactory.quitDriver();
+	 }
+	
+	   //@Test(priority=2)
+	    public void testValidLogin() {
+		   {
+		        HomePage homePage = new HomePage(DriverFactory.getDriver());
+		        homePage.clickSignIn();
+		   Loginpage loginPage = new Loginpage(DriverFactory.getDriver());
+		   loginPage.login("your_email@example.com", "your_password");
+		   Assert.assertTrue(DriverFactory.getDriver().getTitle().contains("Amazon"));
+	        // Add assertion for successful login
+		   String pageTitle = DriverFactory.getDriver().getTitle();
+		    Assert.assertTrue(pageTitle.contains("Amazon"), "Login failed!");
+		   }
+	   }
+	  // @Test(priority=1)
+	   public void testEnterPhoneNumber() throws InterruptedException {
+	        HomePage homePage = new HomePage(DriverFactory.getDriver());
+	        homePage.clickSignIn();
+
+	        Loginpage loginPage = new Loginpage(DriverFactory.getDriver());
+	        loginPage.enterPhoneNumberandclick("9876543210"); 
+	   }
+	   
+	       // @Test(priority=3)
+	        
+	        public void testEnterPhonewrongNumber() throws InterruptedException {
+		        HomePage homePage = new HomePage(DriverFactory.getDriver());
+		        homePage.clickSignIn();
+
+		        Loginpage loginPage = new Loginpage(DriverFactory.getDriver());
+		        loginPage.enterPhoneNumberandclick("98765432104565655666");
+		        System.out.println("printl not valid number ");
+	        
+	        // Replace with your test number
+
+	        // Optional: add assertion to check if password page is displayed
+	        String pageTitle = DriverFactory.getDriver().getTitle();
+	        System.out.println("Navigated to: " + pageTitle);
+}
+}
+	    
+	
+	
+
+

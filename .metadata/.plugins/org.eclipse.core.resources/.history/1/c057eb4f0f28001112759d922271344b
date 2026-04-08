@@ -1,0 +1,110 @@
+package Tests;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import BaseTest.basetest;
+import utils.DriverFactory;
+import BaseTest.basetest;
+import Pages.HomePage;
+import Pages.Loginpage;
+import Pages.SearchPage;
+
+import org.testng.annotations.Test;
+
+public class SearchTest  extends basetest{
+	 WebDriver driver;
+
+	  //  @Test
+	    public void testSearchProductLaptop() throws InterruptedException {
+	    	 Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("Laptop");
+
+	        // Verify results page contains the search keyword
+	        String pageTitle = DriverFactory.getDriver().getTitle();
+	        Assert.assertTrue(pageTitle.contains("Laptop"), "Search results not displayed correctly!");}
+	  //  }
+	  //@Test
+	    
+	    public void testSearchProductwithwroungName( ) throws InterruptedException {
+	    	 Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("9019867797");
+	        System.out.println("not result found on screen");
+	    }
+	 // }
+	    
+  
+	  //@Test
+	    public void testSearchProductwithwroungquestion() throws InterruptedException { 
+	    	 Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("shalini999333@gmail.com");
+	        System.out.println("not result found on screen");
+	    }
+	  //}
+	    
+	    @Test
+	    public void testSearchProductwithwomenDress() throws InterruptedException {
+	    	
+	    	 Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("kurtiset");
+	        System.out.println("print the result pass is kurtiset is can able to open ");
+	        
+	    }
+	    @Test
+	    public void testSearchProductwithclickcustmerservice() throws InterruptedException {
+	    	
+	    
+	    	 Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("shalini999333@gmail.com");
+	        System.out.println("not result found on screen");
+	    }
+	    
+
+	    
+
+
+
+
+	 // @Test
+	    public void searchAndClickProduct() throws InterruptedException {
+	    	Pages.SearchPage searchPage = new  Pages.SearchPage(DriverFactory.getDriver());
+	        searchPage.searchProduct("mobile");
+
+	        SearchPage results = new SearchPage(driver);
+	        results. galaxyultra();
+	        System.out.println(" click if product found on screen ");
+	 // }
+	        
+	       
+	        	
+	        
+	        	
+	        
+	       
+	        	
+	        
+	        		
+	        
+	        
+
+	        // Verify product page opened
+	       // String title = driver.getTitle();
+	       // Assert.assertTrue(title.contains("The New Galaxy S26 Ultra | Sale Is Live"), "Product page  opened!");
+	    
+}
+
+}
+
+
+
+	    
+	
+	       
+	    
+
+	  
+
+
